@@ -1,0 +1,15 @@
+d8dev.my_page:
+  path: '/mypage'
+  defaults:
+    _controller: '\Drupal\d8dev\Controller\d8devController::myPage'
+    _title: 'My first page in Drupal8'
+  requirements:
+    _permission: 'access content'
+
+d8dev.form:
+  path: '/myform'
+  defaults:
+    _title: 'Application form'
+    _form: '\Drupal\d8dev\Form\ResumeForm'
+  requirements:
+    _permission: 'access content'

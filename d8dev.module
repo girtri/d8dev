@@ -1,0 +1,13 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+
+function d8dev_theme($existing, $type, $theme, $path) {
+    return array(
+        'recipe_time_display' => array(
+            'variables' => array('value' => NULL),
+            'template' => 'recipe-time-display',
+        ),
+    );
+}
