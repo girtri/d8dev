@@ -41,6 +41,19 @@ class ResumeForm extends FormBase
       '#title' => t('DOB'),
       '#required' => TRUE,
     );
+
+    $form['time_without_date'] = array(
+      '#type' => 'datetime',
+      '#title' => $this->t('Time without date'),
+      // HTML 5 time element format can be H:i
+      '#default_value' => '20:00',
+      '#size' => 20,
+      '#date_date_element' => 'none',
+      '#date_time_format' => 'H:i',
+      // This sets html 5 time element use explicitly, probably not necessary.
+      '#date_time_element' => 'time',
+    );
+
     $form['candidate_gender'] = array (
       '#type' => 'select',
       '#title' => ('Gender'),
