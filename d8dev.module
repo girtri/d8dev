@@ -1,4 +1,6 @@
 <?php
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Implements hook_theme().
  */
@@ -10,4 +12,34 @@ function d8dev_theme($existing, $type, $theme, $path) {
             'template' => 'recipe-time-display',
         ),
     );
+}
+
+function d8dev_form_alter(&$form, FormStateInterface $form_state)
+{
+    // Custom validate function.
+    $form['#validate'][] = 'faq_ask_form_validate';
+}
+
+/**
+ * Validation form for the FAQ Ask form.
+ *
+ * Verifies that the e-mail entered seems to be a valid e-mail.
+ */
+function faq_ask_form_validate($form, FormStateInterface &$form_state)
+{
+    $nome = $form_state->getValue('field_nome');
+
+    $form_state->setErrorByName('field_nome', t('That is not a valid name.'));
+}
+
+function d8dev_node_presave($node)
+{
+    $id = $node->id();
+    /*
+    if ($node->id() && $node->moderate) {
+        // Reset votes when node is updated:
+        $node->score = 0;
+        $node->users = '';
+        $node->votes = 0;
+    }*/
 }
