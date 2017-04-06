@@ -28,8 +28,8 @@ function d8dev_form_alter(&$form, FormStateInterface $form_state)
 function faq_ask_form_validate($form, FormStateInterface &$form_state)
 {
     $nome = $form_state->getValue('field_nome');
-
-    $form_state->setErrorByName('field_nome', t('That is not a valid name.'));
+    if (isset($nome))
+        $form_state->setErrorByName('field_nome', t('That is not a valid name.'));
 }
 
 function d8dev_node_presave($node)
