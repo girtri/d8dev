@@ -14,10 +14,12 @@ function d8dev_theme($existing, $type, $theme, $path) {
     );
 }
 
-function d8dev_form_alter(&$form, FormStateInterface $form_state)
+function d8dev_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
-    // Custom validate function.
-    $form['#validate'][] = 'faq_ask_form_validate';
+    if ($form_id == "node_player_edit_form") {
+        // Custom validate function.
+        $form['#validate'][] = 'faq_ask_form_validate';
+    }
 }
 
 /**
